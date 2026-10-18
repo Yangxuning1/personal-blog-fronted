@@ -1,7 +1,5 @@
 <template>
-    <div>
-        
-    </div>
+    个人资料
 </template>
 
 <script setup>
