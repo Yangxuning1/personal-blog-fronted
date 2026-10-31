@@ -108,6 +108,7 @@
     .blog-layout {
         display: flex;
         height: 100dvh;
+        overflow: hidden;
     }
     /* 侧栏 */
     .sidebar {
@@ -123,14 +124,16 @@
     .main-col {
         flex: 1;
         display: flex;
+        min-width: 0;
         flex-direction: column;
     }
     
     /* 内容区域 */
     .content {
         flex: 1;
-        background-color: skyblue;
-        padding: 20px;
+        min-height: 0;
+        overflow-y: auto;
+        scrollbar-gutter: stable;
     }
     /* logo */
     .logo{
