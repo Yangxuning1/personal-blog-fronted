@@ -73,8 +73,11 @@
    .home{
         display: grid;
         grid-template-columns: minmax(0, 1fr) 370px;   
+        margin: 0 auto;
         gap: 20px;
-        padding: 20px 28px;                        
+        padding: 20px 28px; 
+        max-width: 1480px;             
+                  
     }
     /* hero区域*/
     .hero{
@@ -212,7 +215,7 @@
         display: flex;     
         flex-direction: column;     
         border-radius: 14px;
-        height: 230px;
+        height: 240px;
         background-color: #ffffff;
         border: 1px solid #eceef2;
         overflow: hidden;
@@ -221,6 +224,7 @@
         display: block;
         flex: 0 0 45%;        /* 封面占 45% 高度 */
         width: 100%;
+        height: 55%;
         object-fit: cover;
     }
     .card-title{
@@ -343,4 +347,47 @@
         background-color: #eef4fb;
         color: #2b78cc;
 }
+/* 平板：768 ~ 1279  */
+    @media (max-width: 1279px) {
+        /* 内容变为单列 */
+        .home{
+            grid-template-columns: minmax(0, 1fr);
+        }
+        .home-rail{
+            position: static;
+            max-height: none;
+            overflow: visible;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .rail-card{
+            flex: 1 1 260px;
+        }
+    }
+
+ /* 小屏幕 <=767px */
+    @media (max-width: 767px) {
+        /* 右栏下沉 */
+        .home{
+            grid-template-columns: minmax(0, 1fr);
+            padding: 16px;   
+            gap: 16px;
+        }
+        .home-rail{
+            position: static;
+            max-height: none;
+            overflow: visible;
+        }
+        /* 卡片变单列 */
+        .card-grid{
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        /* hero的大小 */
+        .hero{ height: 180px; }
+        .hero-content{ padding: 0 24px; gap: 8px; }
+        .hero-hello{ font-size: 14px; }
+        .hero-title{ font-size: 22px; letter-spacing: 1px; }
+        .hero-sub{ font-size: 13px; }
+    }
 </style>

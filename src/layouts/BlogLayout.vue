@@ -1,7 +1,9 @@
 <template>
     <div class="blog-layout">
+        <!-- 遮罩：打开时显示，点击关闭 -->
+        <div v-if="isMenuOpen" class="overlay" @click="isMenuOpen = false"></div>
         <!-- 侧栏 -->
-        <aside class="sidebar">
+        <aside class="sidebar" :class="{ 'sidebar-open': isMenuOpen }">
             <!-- logo -->
             <RouterLink to="/" class="logo">
                 <img src="@/assets/images/logo.png">
@@ -57,6 +59,13 @@
         <div class="main-col">
             <!-- 顶栏 -->
             <header class="header">
+                <!-- 汉堡按钮 -->
+                 <button class="menu-toggle" @click="isMenuOpen = !isMenuOpen" aria-label="打开菜单">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M4 7h16M4 12h16M4 17h16"/>
+                    </svg>
+                 </button>
                 <!-- 左侧留白区域 -->
                 <span class="header-spacer"></span>
                 <!-- 搜索框 -->
@@ -100,8 +109,19 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { watch } from 'vue';
+
     // 获取底部装饰出的年份日期
     const year = new Date().getFullYear()
+    // 监测菜单是否打开
+    const isMenuOpen = ref(false)
+    const route = useRoute()
+
+    watch(() => route.path, () => {
+        isMenuOpen.value = false
+    })
 </script>
 
 <style scoped>
@@ -110,6 +130,7 @@
         height: 100dvh;
         overflow: hidden;
     }
+    
     /* 侧栏 */
     .sidebar {
         display: flex;
@@ -119,6 +140,11 @@
         padding: 0 16px;
         gap: 30px;
         border-right: 1px solid #e9ebef;
+        overflow-y: auto;
+    }
+    /* 隐藏滚动条 */
+    .sidebar::-webkit-scrollbar{
+        display: none;
     }
     /* 侧栏右侧区域 */
     .main-col {
@@ -285,6 +311,7 @@
         padding: 0 28px;
         align-items: center;
         border-bottom: 1px solid #eceef2;
+        gap: 10px;
     }
     .header-spacer{
         flex: 4;
@@ -294,6 +321,23 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+    }
+    /* 汉堡按钮 */
+    .menu-toggle{
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        border: 0;
+        border-radius: 10px;
+        background: none;
+        color: #5b6472;
+        cursor: pointer;
+    }
+    .menu-toggle:hover{
+        background-color: #f3f5f8;
     }
     /* 搜索框 */
     .search{
@@ -400,7 +444,7 @@
         font-size: 15px;
         transition: transform .15s;
     }
-    .menu-item:hover{
+    .menu-item:hover i{
         transform: translateX(2px);
     }
     .logout{
@@ -410,4 +454,61 @@
         background-color: #fdf3f2;
         color: #c0392b;
     }
+    
+    /* 小屏幕 <=767px */
+    @media (max-width: 767px) { 
+        /* 显示汉堡按钮 */
+        .menu-toggle{
+            display: inline-block;
+        }
+        
+        /* 侧栏变成抽屉 */
+        .sidebar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 260px;
+            z-index: 60;
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform .3s cubic-bezier(.22, .61, .36, 1);
+            box-shadow: none;
+        }
+        
+        /* 打开状态下把侧栏滑动回来 */
+        .sidebar.sidebar-open{
+            transform: translateX(0);
+            box-shadow: 8px 0 32px rgba(16, 24, 40, .18);
+        }
+          /* 遮罩 */
+        .overlay{
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            background-color: rgba(15, 23, 32, .45);
+            animation: overlay-in .25s ease;
+        }
+         @keyframes overlay-in{
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }   
+    }
+    /* 桌面档：侧栏出现时淡入 */
+    @media (min-width: 768px){
+        .sidebar{
+            animation: sidebar-in .45s cubic-bezier(.22, .61, .36, 1);
+        }
+    }
+
+    @keyframes sidebar-in{
+        from{
+            opacity: 0;
+            transform: translateX(-16px);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0);
+        }
+}
 </style>
