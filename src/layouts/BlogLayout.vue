@@ -43,16 +43,12 @@
             <!-- 底部区域 -->
             <div class="sidebar-footer">
                 <p class="quote">「困扰我们的不是事情本身<br>而是我们对它的看法」</p>
-
-                <svg class="deco" viewBox="0 0 64 24" fill="none" aria-hidden="true">
-                    <path d="M2 23 L18 7 L27 16 L34 10 L62 23 Z" fill="currentColor" opacity=".35"/>
-                    <path d="M22 23 L38 4 L54 23 Z" fill="currentColor"/>
-                </svg>
-
+                <img class="deco" src="@/assets/images/mountain.png" alt="">
                 <p class="copyright">
                     © {{ year }} MORROW<br>
                     All rights reserved.
                 </p>
+                
             </div>
         </aside>
         <!-- 侧栏右侧区域 -->
@@ -133,6 +129,7 @@ import { watch } from 'vue';
     
     /* 侧栏 */
     .sidebar {
+        position: relative;
         display: flex;
         flex-direction: column;
         flex: 0 0 250px;
@@ -291,9 +288,14 @@ import { watch } from 'vue';
 
     /* 山形装饰 */
     .deco{
-        width: 80px;
-        height: auto;      
-        color: #dfe4ea;   
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        mix-blend-mode: multiply;
+        pointer-events: none;
     }
     /* 版权信息 */
     .copyright{

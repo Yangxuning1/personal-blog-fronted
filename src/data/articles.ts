@@ -1,0 +1,168 @@
+const coverMap = import.meta.glob('../assets/images/card*.jpg', {
+    eager: true,
+    import: 'default',
+}) as Record<string, string>
+
+function cover(n: number):string {
+    return coverMap[`../assets/images/card${n}.jpg`] ?? ''
+}
+
+export interface Article {
+    id: number
+    title: string
+    summary: string
+    category: string
+    author: string
+    publishedAt: string     
+    views: number
+    cover: string
+    comments: number
+    likes: number
+}
+
+export const articles: Article[] = [
+    {
+        id: 1,
+        title: 'Vue3 组件传值方式总结：v-bind、v-model 与 Pinia',
+        summary: '组件之间传值有多种方式，本文梳理 props、v-model、provide/inject 的区别，以及 Pinia 如何做全局状态管理。',
+        category: '前端开发',
+        author: 'Xuning Yang',
+        publishedAt: '2026-11-08',
+        views: 2300,
+        cover: cover(1),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 2,
+        title: 'CSS Grid 布局实战：从两栏到响应式',
+        summary: '用 grid-template-columns 和 minmax() 实现一套不用断点的自适应栅格，顺带解释 fr 单位到底怎么算。',
+        category: '前端开发',
+        author: '陈亦然',
+        publishedAt: '2026-11-03',
+        views: 1200,
+        cover: cover(2),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 3,
+        title: 'Node.js 接口设计：从路由到错误处理',
+        summary: '一个 REST 接口该长什么样：路径命名、状态码、统一响应结构，以及错误中间件的写法。',
+        category: '后端开发',
+        author: '周远',
+        publishedAt: '2026-10-29',
+        views: 980,
+        cover: cover(3),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 4,
+        title: '大学四年，我的学习规划与职业规划',
+        summary: '从大一的迷茫到确定方向，记录我如何一步步靠近“嵌入式开发工程师”这个目标。',
+        category: '学习笔记',
+        author: '林小满',
+        publishedAt: '2026-10-24',
+        views: 3500,
+        cover: cover(4),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 5,
+        title: '从 0 搭一个 Vite + Vue3 项目',
+        summary: '不依赖脚手架，手写一份最小的工程配置：别名、TypeScript、路由与样式组织。',
+        category: '前端开发',
+        author: 'Xuning Yang',
+        publishedAt: '2026-10-20',
+        views: 1800,
+        cover: cover(5),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 6,
+        title: '关于坚持这件小事',
+        summary: '写了三年的博客，停更过十几次。聊聊那些让我重新打开编辑器的瞬间。',
+        category: '生活随笔',
+        author: 'Xuning Yang',
+        publishedAt: '2026-10-15',
+        views: 2100,
+        cover: cover(6),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 7,
+        title: 'MySQL 索引原理与慢查询优化',
+        summary: 'B+ 树为什么适合做索引，联合索引的最左前缀原则，以及 EXPLAIN 该怎么看。',
+        category: '后端开发',
+        author: '周远',
+        publishedAt: '2026-10-10',
+        views: 2600,
+        cover: cover(7),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 8,
+        title: 'JavaScript 常用方法与技巧整理',
+        summary: '数组、字符串、Promise 的常用方法清单，附上容易踩坑的边界情况。',
+        category: '前端开发',
+        author: '陈亦然',
+        publishedAt: '2026-10-05',
+        views: 1900,
+        cover: cover(8),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 9,
+        title: '算法入门：从两数之和说起',
+        summary: '不做题海战术，先弄明白哈希表为什么能把 O(n²) 降到 O(n)。',
+        category: '学习笔记',
+        author: '林小满',
+        publishedAt: '2026-09-30',
+        views: 1400,
+        cover: cover(9),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 10,
+        title: 'Redis 缓存设计：常见问题与解决',
+        summary: '缓存穿透、击穿、雪崩分别是什么，以及对应的三种兜底策略。',
+        category: '后端开发',
+        author: '周远',
+        publishedAt: '2026-09-25',
+        views: 2200,
+        cover: cover(10),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 11,
+        title: '一次独自旅行的记录',
+        summary: '没有攻略，没有计划，只是想去看看山。',
+        category: '生活随笔',
+        author: '林小满',
+        publishedAt: '2026-09-20',
+        views: 1600,
+        cover: cover(11),
+        comments: 12,
+        likes: 36,
+    },
+    {
+        id: 12,
+        title: '读书笔记：《人月神话》',
+        summary: '“向进度落后的项目增加人手，只会让进度更落后。”这句四十多年前的话，今天依然成立。',
+        category: '学习笔记',
+        author: 'Xuning Yang',
+        publishedAt: '2026-09-15',
+        views: 1100,
+        cover: cover(12),
+        comments: 12,
+        likes: 36,
+    },
+]

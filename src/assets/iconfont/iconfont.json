@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "577362",
+      "name": "时钟",
+      "font_class": "clock",
+      "unicode": "e74f",
+      "unicode_decimal": 59215
+    },
+    {
+      "icon_id": "667792",
+      "name": "评论",
+      "font_class": "comment",
+      "unicode": "e6ad",
+      "unicode_decimal": 59053
+    },
+    {
+      "icon_id": "7116474",
+      "name": "点赞",
+      "font_class": "like",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "8797986",
+      "name": "浏览",
+      "font_class": "view",
+      "unicode": "e7d0",
+      "unicode_decimal": 59344
+    },
+    {
       "icon_id": "17938522",
       "name": "文章分类",
       "font_class": "cate",

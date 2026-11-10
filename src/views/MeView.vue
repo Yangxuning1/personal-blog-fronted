@@ -1,5 +1,5 @@
 <template>
-    <h1>关于</h1>
+    <h1>我的</h1>
 </template>
 
 <script setup>

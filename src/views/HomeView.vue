@@ -20,11 +20,7 @@
             </div>
 
             <div class="card-grid">
-                <div v-for="i in 7" :key="i" class="article-card">
-                    <img src="@/assets/images/card.jpg" class="card-img">
-                    <div class="card-title">Vue3 组件传值方式总结</div>
-                    <div class="card-text">组件之间传值有多种方式，本文梳理常用写法。</div>
-                </div>
+                <ArticleCard v-for="a in articles.slice(0, 7)" :key="a.id" :article="a" />
             </div>
         </div>
 
@@ -52,6 +48,10 @@
 </template>
 
 <script setup>
+    import ArticleCard from '@/components/blog/ArticleCard.vue'
+    import { articles } from '@/data/articles'
+
+
     // 热门标签
     const tags = [
         'Vue3', 'JavaScript', '嵌入式',
@@ -204,42 +204,7 @@
     .section-more:hover{
         color: #2b78cc;
     }
-    /* 卡片区 */
-    .card-grid{
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-    }
 
-    .article-card{    
-        display: flex;     
-        flex-direction: column;     
-        border-radius: 14px;
-        height: 240px;
-        background-color: #ffffff;
-        border: 1px solid #eceef2;
-        overflow: hidden;
-    }
-    .card-img{
-        display: block;
-        flex: 0 0 45%;        /* 封面占 45% 高度 */
-        width: 100%;
-        height: 55%;
-        object-fit: cover;
-    }
-    .card-title{
-        padding: 12px 14px 0;
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 1.4;
-        color: #1c2128;
-    }
-    .card-text{
-        padding: 6px 14px 0;
-        font-size: 12.5px;
-        line-height: 1.55;
-        color: #8b95a3;
-    }
     /* 侧栏 */
     .home-rail{
         position: sticky;
@@ -377,11 +342,6 @@
             position: static;
             max-height: none;
             overflow: visible;
-        }
-        /* 卡片变单列 */
-        .card-grid{
-            grid-template-columns: 1fr;
-            gap: 16px;
         }
         /* hero的大小 */
         .hero{ height: 180px; }
