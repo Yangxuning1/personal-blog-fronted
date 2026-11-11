@@ -20,7 +20,7 @@
             </div>
 
             <div class="card-grid">
-                <ArticleCard v-for="a in articles.slice(0, 7)" :key="a.id" :article="a" />
+                <ArticleCard v-for="a in articles.slice(0, 10)" :key="a.id" :article="a" />
             </div>
         </div>
 

@@ -18,6 +18,7 @@ export interface Article {
     cover: string
     comments: number
     likes: number
+    tags?: string[]
 }
 
 export const articles: Article[] = [
@@ -32,6 +33,7 @@ export const articles: Article[] = [
         cover: cover(1),
         comments: 12,
         likes: 36,
+        tags: ['Vue3', '组合式 API', 'Pinia'],
     },
     {
         id: 2,
@@ -44,6 +46,7 @@ export const articles: Article[] = [
         cover: cover(2),
         comments: 12,
         likes: 36,
+        tags: ['CSS', '响应式布局'],
     },
     {
         id: 3,
@@ -56,6 +59,7 @@ export const articles: Article[] = [
         cover: cover(3),
         comments: 12,
         likes: 36,
+        tags: ['Node.js', 'REST API'],
     },
     {
         id: 4,
@@ -68,6 +72,7 @@ export const articles: Article[] = [
         cover: cover(4),
         comments: 12,
         likes: 36,
+        tags: ['学习方法', '职业规划'],
     },
     {
         id: 5,
@@ -80,6 +85,7 @@ export const articles: Article[] = [
         cover: cover(5),
         comments: 12,
         likes: 36,
+        tags: ['Vite', 'Vue3', '工程化'],
     },
     {
         id: 6,
@@ -92,6 +98,7 @@ export const articles: Article[] = [
         cover: cover(6),
         comments: 12,
         likes: 36,
+        tags: ['随笔', '成长'],
     },
     {
         id: 7,
@@ -104,6 +111,7 @@ export const articles: Article[] = [
         cover: cover(7),
         comments: 12,
         likes: 36,
+        tags: ['MySQL', '索引', '性能优化'],
     },
     {
         id: 8,
@@ -116,6 +124,7 @@ export const articles: Article[] = [
         cover: cover(8),
         comments: 12,
         likes: 36,
+        tags: ['JavaScript', 'ES6'],
     },
     {
         id: 9,
@@ -128,6 +137,7 @@ export const articles: Article[] = [
         cover: cover(9),
         comments: 12,
         likes: 36,
+        tags: ['算法', '数据结构'],
     },
     {
         id: 10,
@@ -140,6 +150,7 @@ export const articles: Article[] = [
         cover: cover(10),
         comments: 12,
         likes: 36,
+        tags: ['Redis', '缓存'],
     },
     {
         id: 11,
@@ -152,6 +163,7 @@ export const articles: Article[] = [
         cover: cover(11),
         comments: 12,
         likes: 36,
+        tags: ['旅行', '随笔'],
     },
     {
         id: 12,

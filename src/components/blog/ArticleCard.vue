@@ -1,5 +1,5 @@
 <template>
-    <article class="article-card">
+    <RouterLink :to="`/article/${article.id}`" class="article-card">
         <div class="card-cover">
             <img class="card-img" :src="article.cover" :alt="article.title">
             <span class="card-category">{{ article.category }}</span>
@@ -22,13 +22,18 @@
                 <span class="meta-item">
                     <i class="iconfont icon-like"></i>{{ article.likes }}
                 </span>
+                <span class="card-author">
+                    <img class="author-avatar" :src="article.avatar || defaultAvatar" :alt="article.author"/>
+                    <span class="author-name">{{ article.author }}</span>
+                </span>
                 <span class="card-arrow">→</span>
             </div>
         </div>
-    </article>
+    </RouterLink>
 </template>
 
 <script setup>
+import defaultAvatar from '@/assets/images/avatar.jpg'
 defineProps({
     article: {
         type: Object,
@@ -140,8 +145,29 @@ defineProps({
     font-size: 13px;
 }
 
-.card-arrow{
+.card-author{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     margin-left: auto;
+}
+.author-avatar{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.author-name{
+    max-width: 76px;
+    overflow: hidden;
+    font-size: 12px;
+    color:  #2f3742;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.card-arrow{
+    margin-left: 8px; 
     font-size: 15px;
     color: #b6bdc6;
     transition: transform .2s, color .2s;
